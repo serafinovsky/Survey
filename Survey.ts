@@ -15,6 +15,7 @@ class Survey {
   }
 
   setVotes(userAnswers: [string, string][]): void {
+    this.votes = {};
     userAnswers.forEach((userAnswer) => {
       let answers = userAnswer[1].split(";");
       if (!this.multipleChoice) {

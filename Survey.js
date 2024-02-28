@@ -9,6 +9,7 @@ class Survey {
     return this.question;
   }
   setVotes(userAnswers) {
+    this.votes = {};
     userAnswers.forEach((userAnswer) => {
       let answers = userAnswer[1].split(";");
       if (!this.multipleChoice) {
