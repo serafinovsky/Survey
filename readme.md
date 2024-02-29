@@ -7,18 +7,25 @@ const multipleChoice = true;
 const survey = new Survey(questionOptions, multipleChoice);
 
 // Устанавливаем голоса
-const userAnswers = [
-  ["user1", "Красный;Синий"],
-  ["user2", "Красный;Зеленый"],
-];
-survey.setVotes(userAnswers);
+survey.setVotes([
+  ["user1", "1"],
+  ["user2", "2;3"],
+  ["user3", "1;3"],
+  ["user1", "3;1"],
+]);
 
 // Отображаем результаты
-const results = survey.displayResults();
 console.log(survey.question);
 // Какой ваш любимый цвет?
-console.log(results.join("\n"));
-// Красный: 50.00%  ##################################################
-// Синий: 25.00%    #########################
-// Зеленый: 25.00%  #########################
+
+console.log(survey.getResults().join("\n"));
+// 33.33333333333333
+// 16.666666666666664
+// 50
+
+// Вывод на страницу
+const surveyElement = document.getElementById("survey");
+surveyElement.innerHTML = survey.displayResultsAsHTML(true);
 ```
+
+Пример - https://jsfiddle.net/hegwdcp5/
